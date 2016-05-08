@@ -1,0 +1,25 @@
+AllCops:
+  TargetRubyVersion: 2.1
+  Exclude:
+    - 'spec/fixtures/**/*'
+
+Metrics/LineLength:
+  Enabled: false
+
+Style/CommandLiteral:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/DoubleNegation:
+  Enabled: false
+
+Style/RegexpLiteral:
+  Enabled: false
+
+Style/StringLiterals:
+    EnforcedStyle: double_quotes
+
+Style/UnneededInterpolation:
+  Enabled: false

@@ -1,0 +1,44 @@
+{
+  "URIs": {
+    "Git" : [
+        "git://example.com/path/to/repo.git/",
+        "git://example.com/~user/path/to/repo.git/"
+    ],
+    "HTTP" : [
+        "http://192.168.101.127/user/project.git",
+        "http://example.com/path/to/repo.git/",
+        "http://example.com/user/project.git",
+        "https://192.168.101.127/user/project.git",
+        "https://example.com/path/to/repo.git/",
+        "https://example.com/user/project.git"
+    ],
+    "RSYNC" : [ "rsync://example.com/path/to/repo.git/"] ,
+    "SSH" : [
+        "ssh://example.com/path/to/repo.git/",
+        "ssh://example.com/path/to/repo.git/",
+        "ssh://example.com/~/path/to/repo.git",
+        "ssh://example.com/~user/path/to/repo.git/",
+        "ssh://example.com:1981/path/to/repo.git/",
+        "ssh://user@example.com/path/to/repo.git/",
+        "ssh://user@example.com/path/to/repo.git/",
+        "ssh://user@example.com/~/path/to/repo.git",
+        "ssh://user@example.com/~user/path/to/repo.git/",
+        "ssh://user@example.com:1981/path/to/repo.git/"
+    ]
+  },
+  "paths": [
+    "/path/to/repo.git/",
+    "path/to/repo.git/",
+    "~/path/to/repo.git"
+  ],
+  "triplets" : [
+    "example.com:/path/to/repo.git/",
+    "example.com:path/to/repo.git",
+    "example.com:~user/path/to/repo.git/",
+    "git@192.168.101.127:user/project.git",
+    "git@example.com:user/project.git",
+    "user@example.com:/path/to/repo.git/",
+    "user@example.com:path/to/repo.git",
+    "user@example.com:~user/path/to/repo.git/"
+  ]
+}
