@@ -110,7 +110,7 @@ module URI
   # parse a triplet before URI::Parser can reject it. Otherwise
   # fall through to the original URI::Parser.parse method.
   #
-  if Gem::Version.new(RUBY_VERSION) >= Gem::Version.new("2.3.0")
+  if Gem::Version.new(RUBY_VERSION) >= Gem::Version.new("2.2.0")
     # rubocop:disable Style/ClassAndModuleCamelCase
     class RFC3986_Parser
       prepend TripletInterruptus
