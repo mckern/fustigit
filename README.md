@@ -6,6 +6,8 @@
     <dd>To criticize harshly.</dd>
 </dl>
 
+[![Build Status](https://travis-ci.org/mckern/fustigit.svg?branch=master)](https://travis-ci.org/mckern/fustigit)
+
 ### TL;DR
 
 Fustigit will let you "parse" SCP-like address triplets using Ruby's baked-in [URI library](http://ruby-doc.org/stdlib-2.3.1/libdoc/uri/rdoc/index.html) (... and just a *moderate* amount of monkey-patching) and turn them into probably-valid URI objects.
