@@ -2,7 +2,7 @@
 language: ruby
 bundler_args: --without development
 sudo: false
-script: "bundle exec check"
+script: "bundle exec rake check"
 notifications:
   email: false
 rvm:
