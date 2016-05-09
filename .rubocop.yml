@@ -1,5 +1,6 @@
 AllCops:
   TargetRubyVersion: 2.1
+  DisplayCopNames: true
   Exclude:
     - 'spec/fixtures/**/*'
 
