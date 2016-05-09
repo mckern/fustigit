@@ -109,7 +109,15 @@ module URI
   # allows us to hook into URI::Parser.parse and attempt to
   # parse a triplet before URI::Parser can reject it. Otherwise
   # fall through to the original URI::Parser.parse method.
-  class Parser
-    prepend TripletInterruptus
+  #
+  if Gem::Version.new(RUBY_VERSION) >= Gem::Version.new("2.3.0")
+    # rubocop:disable Style/ClassAndModuleCamelCase
+    class RFC3986_Parser
+      prepend TripletInterruptus
+    end
+  else
+    class Parser
+      prepend TripletInterruptus
+    end
   end
 end
