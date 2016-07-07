@@ -26,6 +26,10 @@ describe URI do
       it "returns URI::#{URI.default_triplet_type}" do
         URI.parse(repo).is_a?(URI.const_get(URI.default_triplet_type)).must_equal true
       end
+
+      it "recognizes URI::#{URI.default_triplet_type} as a triplet" do
+        URI.parse(repo).triplet?.must_equal true
+      end
     end
   end
 end
