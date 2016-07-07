@@ -23,7 +23,7 @@ module Triplets
     str << "#{scheme}://" if scheme
     str << "#{user}@" if user
     if port && port != self.class::DEFAULT_PORT
-      host_info [host, port].join(":")
+      host_info = [host, port].join(":")
       str << [host_info, path].join("/").squeeze("/")
     else
       str << [host, path].join("/").squeeze("/")
@@ -37,8 +37,14 @@ module Triplets
   # may not be the most robust method of determining if a
   # triplet should be used, but everything starts someplace.
   def to_s
-    return triplet if relative?
+    return triplet if triplet?
     rfc_uri
+  end
+
+  # Use the same regular expressions that the parser
+  def triplet?
+    triplet.match(URI.parser.const_get(:TRIPLET)) &&
+      !rfc_uri.match(URI.parser.const_get(:SCHEME))
   end
 end
 
@@ -95,6 +101,12 @@ module TripletHandling
       raise ArgumentError, "'#{value}' is not one of: #{TRIPLET_CLASSES.join(', ')}"
     end
     @default_triplet_type = value
+  end
+
+  def parser
+    return URI::RFC3986_Parser if
+      Gem::Version.new(RUBY_VERSION) >= Gem::Version.new("2.2.0")
+    URI::Parser
   end
 end
 
