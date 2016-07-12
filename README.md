@@ -14,9 +14,9 @@ Fustigit will let you "parse" SCP-like address triplets using Ruby's baked-in [U
 
 ### What's a Triplet?
 
-<a href="https://www.debuggex.com/r/UF-0ESZoWXFewi8q"><img src="https://www.debuggex.com/i/UF-0ESZoWXFewi8q.png"></a>
+<a href="https://www.debuggex.com/r/UF-0ESZoWXFewi8q"><img src="readme/railroad-diagram.png"></a>
 
-A triplet is a format for specifying a remote resource, much like a URI. It looks like this: 
+A triplet is a format for specifying a remote resource, much like a URI. It looks like this:
 
     # The username is optional but the hostname and pathname are not
     <username>@<hostname>:<pathname>
@@ -59,7 +59,7 @@ URI::InvalidURIError: bad URI(is not URI?): git@github.com:mckern/fustigit.git [
 => "mckern/fustigit.git"
 >> uri.to_s
 => "git@github.com:mckern/fustigit.git"
->> 
+>>
 ```
 
 ### How (does it work)?
@@ -76,9 +76,9 @@ In the spirit of Jordan Sissel (a hero to admins and operations people everywher
 
 ### License
 
-Fustigate is licensed under the Apache License, Version 2.0.  
+Fustigate is licensed under the Apache License, Version 2.0.
 
-> "When in doubt, use brute force."  
+> "When in doubt, use brute force."
 >    &#8213; <cite>Ken Thompson</cite>
 
 ### Maintainer
