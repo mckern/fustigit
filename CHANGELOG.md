@@ -3,6 +3,12 @@ All notable changes to this project will be documented in this file.
 This project attempts to adhere to [Semantic Versioning](http://semver.org/).
 This changelog attempts to adhere to [Keep a CHANGELOG](http://keepachangelog.com/).
 
+## [0.1.3] - 07 July 2016
+### Added
+- Triplets#split method returns the expected array of values for parsed triplets
+### Changed
+- Improved Triplets#triplet? functionality
+
 ## [0.1.2] - 07 July 2016
 ### Added
 - Triplets#triplet? method allows for fast testing on parsed triplets
