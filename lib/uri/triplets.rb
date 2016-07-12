@@ -31,20 +31,18 @@ module Triplets
   end
   private :rfc_uri
 
-  # if self.path is a relative path, assume that this was parsed
-  # as a triplet and return a Triplet. Otherwise, assume that
-  # this is a valid URI and print an RFC compliant URI. This
-  # may not be the most robust method of determining if a
-  # triplet should be used, but everything starts someplace.
   def to_s
     return triplet if triplet?
     rfc_uri
   end
 
-  # Use the same regular expressions that the parser
+  # Use the same regular expressions that the parser uses to determine
+  # if this is a valid triplet.
   def triplet?
-    triplet.match(URI.parser.const_get(:TRIPLET)) &&
-      !rfc_uri.match(URI.parser.const_get(:SCHEME))
+    # False if self matches a normal URI scheme
+    !(rfc_uri =~ URI.parser.const_get(:SCHEME)) &&
+      # False unless self matches a Triplet scheme
+      !!(triplet =~ URI.parser.const_get(:TRIPLET))
   end
 end
 
@@ -64,6 +62,14 @@ module TripletInterruptus
   def parse(uri)
     return build_triplet(uri) if triplet?(uri)
     super(uri)
+  end
+
+  def split(uri)
+    return super(uri) unless triplet?(uri)
+
+    parts = parse_triplet(uri)
+    [nil, parts[:userinfo], parts[:host], nil,
+     nil, parts[:path], nil, nil, nil]
   end
 
   def triplet?(address)
