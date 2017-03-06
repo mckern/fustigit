@@ -54,7 +54,7 @@ end
 # they're passed.
 module TripletInterruptus
   # Determine if a string can be teased apart into URI-like components
-  TRIPLET = %r{\A(?:(?<userinfo>.+)[@]+)?(?<host>[\w.]+):(?<path>.*)\z}
+  TRIPLET = %r{\A(?:(?<userinfo>.+)[@]+)?(?<host>[\w.-]+):(?<path>.*)\z}
 
   # Determine if a string is prefixed with a URI scheme like http:// or ssh://
   SCHEME = %r{\A(?:(?<scheme>[a-z]+)://)}
