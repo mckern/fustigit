@@ -21,7 +21,7 @@ end
 
 desc "Run RuboCop"
 RuboCop::RakeTask.new(:rubocop) do |task|
-  task.patterns = ["lib/**/*.rb"]
+  task.options << "--display-cop-names"
 end
 
 desc "Run all spec tests and linters"

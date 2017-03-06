@@ -2,7 +2,8 @@
   "URIs": {
     "Git" : [
         "git://example.com/path/to/repo.git/",
-        "git://example.com/~user/path/to/repo.git/"
+        "git://example.com/~user/path/to/repo.git/",
+        "git://sub-domain.example.com/path/to/repo.git"
     ],
     "HTTP" : [
         "http://192.168.101.127/user/project.git",
@@ -10,7 +11,8 @@
         "http://example.com/user/project.git",
         "https://192.168.101.127/user/project.git",
         "https://example.com/path/to/repo.git/",
-        "https://example.com/user/project.git"
+        "https://example.com/user/project.git",
+        "https://sub-domain.example.com/user/project.git"
     ],
     "RSYNC" : [ "rsync://example.com/path/to/repo.git/"] ,
     "SSH" : [
@@ -23,7 +25,8 @@
         "ssh://user@example.com/path/to/repo.git/",
         "ssh://user@example.com/~/path/to/repo.git",
         "ssh://user@example.com/~user/path/to/repo.git/",
-        "ssh://user@example.com:1981/path/to/repo.git/"
+        "ssh://user@example.com:1981/path/to/repo.git/",
+        "ssh://user@sub-domain.example.com:1981/path/to/repo.git/"
     ]
   },
   "paths": [
@@ -39,6 +42,8 @@
     "git@example.com:user/project.git",
     "user@example.com:/path/to/repo.git/",
     "user@example.com:path/to/repo.git",
-    "user@example.com:~user/path/to/repo.git/"
+    "user@example.com:~user/path/to/repo.git/",
+    "sub-domain.example.com:/path/to/some-repo.git",
+    "user@sub-domain.example.com:some-repo.git"
   ]
 }

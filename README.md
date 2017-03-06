@@ -14,7 +14,7 @@ Fustigit will let you "parse" SCP-like address triplets using Ruby's baked-in [U
 
 ### What's a Triplet?
 
-<a href="https://www.debuggex.com/r/UF-0ESZoWXFewi8q"><img src="readme/railroad-diagram.png"></a>
+<a href="https://www.debuggex.com/r/NtHqyDI9LUz-UMia"><img src="readme/railroad-diagram.jpg"></a>
 
 A triplet is a format for specifying a remote resource, much like a URI. It looks like this:
 
