@@ -1,8 +1,8 @@
 require "spec_helper"
 require "fustigit"
 
-describe URI do
-  @git_repos = JSON.load(fixture("formats.json"))
+describe URI do # rubocop:disable Metrics/BlockLength
+  @git_repos = JSON.parse(fixture("formats.json"))
   @git_repos["URIs"].each do |protocol, repos|
     repos.each do |repo|
       describe %(#parse takes given URI "#{repo}") do

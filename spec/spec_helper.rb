@@ -2,12 +2,12 @@ require "bundler/setup"
 require "minitest/spec"
 require "minitest/autorun"
 require "minitest/reporters"
-require "simplecov"
 require "json"
 
 Minitest::Reporters.use! Minitest::Reporters::DefaultReporter.new
 
 if ENV["COVERAGE"]
+  require "simplecov"
   SimpleCov.start do
     # exclude common Bundler locations
     %w(.bundle vendor).each { |dir| add_filter dir }
