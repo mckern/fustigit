@@ -30,6 +30,7 @@ module Triplets
     end
   end
   private :rfc_uri
+  # rubocop:enable Metrics/AbcSize
 
   def to_s
     return triplet if triplet?
@@ -40,7 +41,7 @@ module Triplets
   # if this is a valid triplet.
   def triplet?
     # False if self matches a normal URI scheme
-    !(rfc_uri =~ URI.parser.const_get(:SCHEME)) &&
+    rfc_uri !~ URI.parser.const_get(:SCHEME) &&
       # False unless self matches a Triplet scheme
       !!(triplet =~ URI.parser.const_get(:TRIPLET))
   end
@@ -92,7 +93,7 @@ module TripletInterruptus
 end
 
 module TripletHandling
-  TRIPLET_CLASSES = %w(Git SCP SSH).freeze
+  TRIPLET_CLASSES = %w[Git SCP SSH].freeze
 
   def self.included(base)
     base.extend(TripletHandling)
@@ -129,10 +130,11 @@ module URI
   # fall through to the original URI::Parser.parse method.
   #
   if Gem::Version.new(RUBY_VERSION) >= Gem::Version.new("2.2.0")
-    # rubocop:disable Style/ClassAndModuleCamelCase
+    # rubocop:disable Naming/ClassAndModuleCamelCase
     class RFC3986_Parser
       prepend TripletInterruptus
     end
+    # rubocop:enable Naming/ClassAndModuleCamelCase
   else
     class Parser
       prepend TripletInterruptus

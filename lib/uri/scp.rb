@@ -6,10 +6,10 @@ module URI
 
     DEFAULT_PORT = 22
 
-    COMPONENT = [
-      :scheme,
-      :userinfo,
-      :host, :port, :path
+    COMPONENT = %i[
+      scheme
+      userinfo
+      host port path
     ].freeze
   end
   @@schemes["SCP"] = SCP

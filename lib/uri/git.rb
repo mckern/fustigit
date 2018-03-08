@@ -7,10 +7,10 @@ module URI
     DEFAULT_PORT = 9418
     USE_REGISTRY = false
 
-    COMPONENT = [
-      :scheme,
-      :userinfo,
-      :host, :port, :path
+    COMPONENT = %i[
+      scheme
+      userinfo
+      host port path
     ].freeze
   end
   @@schemes["GIT"] = Git

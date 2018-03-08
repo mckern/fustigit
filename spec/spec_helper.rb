@@ -10,7 +10,7 @@ if ENV["COVERAGE"]
   require "simplecov"
   SimpleCov.start do
     # exclude common Bundler locations
-    %w(.bundle vendor).each { |dir| add_filter dir }
+    %w[.bundle vendor].each { |dir| add_filter dir }
     # exclude test code
     add_filter "spec"
   end
