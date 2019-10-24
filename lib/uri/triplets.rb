@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "uri"
 
 # Triplets is a mix-in for subclasses of URI::Generic, which
@@ -9,9 +11,10 @@ module Triplets
   # @return [String] a string representation of the URI components
   # as an SCP-style Triplet
   def triplet
-    str = ""
+    str = []
     str << "#{user}@" if user && !user.empty?
     str << "#{host}:#{path}".squeeze("/")
+    str.join ""
   end
   private :triplet
 
@@ -19,7 +22,7 @@ module Triplets
   # as a valid RFC compliant URI
   # rubocop:disable Metrics/AbcSize
   def rfc_uri
-    str = ""
+    str = []
     str << "#{scheme}://" if scheme
     str << "#{user}@" if user
     if port && port != self.class::DEFAULT_PORT
@@ -28,12 +31,14 @@ module Triplets
     else
       str << [host, path].join("/").squeeze("/")
     end
+    str.join ""
   end
   private :rfc_uri
   # rubocop:enable Metrics/AbcSize
 
   def to_s
     return triplet if triplet?
+
     rfc_uri
   end
 
@@ -55,13 +60,14 @@ end
 # they're passed.
 module TripletInterruptus
   # Determine if a string can be teased apart into URI-like components
-  TRIPLET = %r{\A(?:(?<userinfo>.+)[@]+)?(?<host>[\w.-]+):(?<path>.*)\z}
+  TRIPLET = %r{\A(?:(?<userinfo>.+)[@]+)?(?<host>[\w.-]+):(?<path>.*)\z}.freeze
 
   # Determine if a string is prefixed with a URI scheme like http:// or ssh://
-  SCHEME = %r{\A(?:(?<scheme>[a-z]+)://)}
+  SCHEME = %r{\A(?:(?<scheme>[a-z]+)://)}.freeze
 
   def parse(uri)
     return build_triplet(uri) if triplet?(uri)
+
     super(uri)
   end
 
@@ -80,6 +86,7 @@ module TripletInterruptus
   def build_triplet(address)
     values = parse_triplet(address)
     return nil unless values
+
     URI.scheme_list[URI.default_triplet_type].build(values)
   end
   private :build_triplet
@@ -87,6 +94,7 @@ module TripletInterruptus
   def parse_triplet(address)
     parts = address.match(TRIPLET)
     return nil unless parts
+
     Hash[parts.names.map(&:to_sym).zip(parts.captures)]
   end
   private :parse_triplet
@@ -104,15 +112,15 @@ module TripletHandling
   end
 
   def default_triplet_type=(value)
-    unless TRIPLET_CLASSES.include?(value)
-      raise ArgumentError, "'#{value}' is not one of: #{TRIPLET_CLASSES.join(', ')}"
-    end
+    raise ArgumentError, "'#{value}' is not one of: #{TRIPLET_CLASSES.join(', ')}" unless TRIPLET_CLASSES.include?(value)
+
     @default_triplet_type = value
   end
 
   def parser
     return URI::RFC3986_Parser if
       Gem::Version.new(RUBY_VERSION) >= Gem::Version.new("2.2.0")
+
     URI::Parser
   end
 end

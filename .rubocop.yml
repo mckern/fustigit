@@ -1,5 +1,6 @@
+---
 AllCops:
-  TargetRubyVersion: 2.1
+  TargetRubyVersion: 2.5
   DisplayCopNames: true
   Exclude:
     - 'spec/fixtures/**/*'
@@ -20,7 +21,10 @@ Style/RegexpLiteral:
   Enabled: false
 
 Style/StringLiterals:
-    EnforcedStyle: double_quotes
+  EnforcedStyle: double_quotes
 
 Style/UnneededInterpolation:
   Enabled: false
+
+Style/AccessModifierDeclarations:
+  EnforcedStyle: inline

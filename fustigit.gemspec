@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "time"
 require File.join(File.dirname(__FILE__), "lib", "fustigit", "version")
 
@@ -14,7 +16,7 @@ Gem::Specification.new do |gem|
   gem.email = "ryan@orangefort.com"
   gem.homepage = "http://github.com/mckern/fustigit"
   gem.specification_version = 3
-  gem.required_ruby_version = ">= 2.1.0"
+  gem.required_ruby_version = ">= 2.5.0"
 
   gem.require_path = "lib"
 
