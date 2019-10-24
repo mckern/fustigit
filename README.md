@@ -6,7 +6,7 @@
     <dd>To criticize harshly.</dd>
 </dl>
 
-[![Build Status](https://travis-ci.org/mckern/fustigit.svg?branch=master)](https://travis-ci.org/mckern/fustigit)
+![](https://github.com/mckern/fustigit/workflows/Ruby%20CI/badge.svg)
 
 ### TL;DR
 
