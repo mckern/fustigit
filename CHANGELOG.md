@@ -3,6 +3,13 @@ All notable changes to this project will be documented in this file.
 This project attempts to adhere to [Semantic Versioning](http://semver.org/).
 This changelog attempts to adhere to [Keep a CHANGELOG](http://keepachangelog.com/).
 
+## [0.2.0] - 24 October 2019
+### Changed
+- Updated semantics to address use of frozen string literals
+- Updated minitest semantics to address global `must_equal` deprecations
+- Dropped support for Ruby versions older than 2.5.0
+- Numerous Rubocop related fixups
+
 ## [0.1.4] - 06 March 2017
 ### Added
 - Fixed a missing '-' in the regex pattern that defined the parts of a triplet

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "spec_helper"
 require "fustigit"
 
@@ -7,7 +9,7 @@ describe URI do # rubocop:disable Metrics/BlockLength
     repos.each do |repo|
       describe %(#parse takes given URI "#{repo}") do
         it "returns URI::#{protocol}" do
-          URI.parse(repo).is_a?(URI.const_get(protocol)).must_equal true
+          _(URI.parse(repo).is_a?(URI.const_get(protocol))).must_equal true
         end
       end
     end
@@ -16,7 +18,7 @@ describe URI do # rubocop:disable Metrics/BlockLength
   @git_repos["paths"].each do |repo|
     describe %(#parse takes path "#{repo}") do
       it "returns URI::Generic" do
-        URI.parse(repo).is_a?(URI::Generic).must_equal true
+        _(URI.parse(repo).is_a?(URI::Generic)).must_equal true
       end
     end
   end
@@ -24,11 +26,11 @@ describe URI do # rubocop:disable Metrics/BlockLength
   @git_repos["triplets"].each do |repo|
     describe %(#parse takes triplet "#{repo}") do
       it "returns URI::#{URI.default_triplet_type}" do
-        URI.parse(repo).is_a?(URI.const_get(URI.default_triplet_type)).must_equal true
+        _(URI.parse(repo).is_a?(URI.const_get(URI.default_triplet_type))).must_equal true
       end
 
       it "recognizes URI::#{URI.default_triplet_type} as a triplet" do
-        URI.parse(repo).triplet?.must_equal true
+        _(URI.parse(repo).triplet?).must_equal true
       end
     end
   end
