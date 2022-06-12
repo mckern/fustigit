@@ -14,7 +14,7 @@ module Triplets
     str = []
     str << "#{user}@" if user && !user.empty?
     str << "#{host}:#{path}".squeeze("/")
-    str.join ""
+    str.join
   end
   private :triplet
 
@@ -31,7 +31,7 @@ module Triplets
     else
       str << [host, path].join("/").squeeze("/")
     end
-    str.join ""
+    str.join
   end
   private :rfc_uri
   # rubocop:enable Metrics/AbcSize
@@ -60,7 +60,7 @@ end
 # they're passed.
 module TripletInterruptus
   # Determine if a string can be teased apart into URI-like components
-  TRIPLET = %r{\A(?:(?<userinfo>.+)[@]+)?(?<host>[\w.-]+):(?<path>.*)\z}.freeze
+  TRIPLET = %r{\A(?:(?<userinfo>.+)@+)?(?<host>[\w.-]+):(?<path>.*)\z}.freeze
 
   # Determine if a string is prefixed with a URI scheme like http:// or ssh://
   SCHEME = %r{\A(?:(?<scheme>[a-z]+)://)}.freeze
@@ -95,7 +95,7 @@ module TripletInterruptus
     parts = address.match(TRIPLET)
     return nil unless parts
 
-    Hash[parts.names.map(&:to_sym).zip(parts.captures)]
+    parts.names.map(&:to_sym).zip(parts.captures).to_h
   end
   private :parse_triplet
 end
