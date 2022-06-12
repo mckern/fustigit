@@ -7,6 +7,7 @@
 </dl>
 
 [![Test & Lint](https://github.com/mckern/fustigit/actions/workflows/tests.yaml/badge.svg)](https://github.com/mckern/fustigit/actions/workflows/tests.yaml)
+<https://badge.fury.io/rb/fustigit.svg>
 
 ### TL;DR
 
