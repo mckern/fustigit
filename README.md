@@ -6,7 +6,7 @@
     <dd>To criticize harshly.</dd>
 </dl>
 
-![](https://github.com/mckern/fustigit/workflows/Ruby%20CI/badge.svg?branch=master)
+[![Test & Lint](https://github.com/mckern/fustigit/actions/workflows/tests.yaml/badge.svg)](https://github.com/mckern/fustigit/actions/workflows/tests.yaml)
 
 ### TL;DR
 
