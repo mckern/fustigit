@@ -14,5 +14,9 @@ module URI
       host port path
     ].freeze
   end
-  @@schemes["SCP"] = SCP
+  if respond_to? :register_scheme
+    register_scheme "SCP", SCP
+  else
+    @@schemes["SCP"] = SCP
+  end
 end

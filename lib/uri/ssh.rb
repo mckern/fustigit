@@ -14,5 +14,9 @@ module URI
       host port path
     ].freeze
   end
-  @@schemes["SSH"] = SSH
+  if respond_to? :register_scheme
+    register_scheme "SSH", SSH
+  else
+    @@schemes["SSH"] = SSH
+  end
 end

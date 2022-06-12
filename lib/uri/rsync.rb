@@ -6,5 +6,9 @@ module URI
   class RSYNC < Generic
     DEFAULT_PORT = 873
   end
-  @@schemes["RSYNC"] = RSYNC
+  if respond_to? :register_scheme
+    register_scheme "RSYNC", RSYNC
+  else
+    @@schemes["RSYNC"] = RSYNC
+  end
 end
