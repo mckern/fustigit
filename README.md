@@ -83,4 +83,4 @@ Fustigate is licensed under the Apache License, Version 2.0.
 
 ### Maintainer
 
-Ryan McKern &lt;ryan@orangefort.com&gt;
+Ryan McKern &lt;ryan@mckern.sh&gt;
