@@ -15,5 +15,9 @@ module URI
       host port path
     ].freeze
   end
-  @@schemes["GIT"] = Git
+  if respond_to? :register_scheme
+    register_scheme "GIT", Git
+  else
+    @@schemes["GIT"] = Git
+  end
 end
