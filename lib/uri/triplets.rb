@@ -46,9 +46,9 @@ module Triplets
   # if this is a valid triplet.
   def triplet?
     # False if self matches a normal URI scheme
-    rfc_uri !~ URI.parser.const_get(:SCHEME) &&
+    rfc_uri !~ URI.parser.const_get(:TI_SCHEME) &&
       # False unless self matches a Triplet scheme
-      !!(triplet =~ URI.parser.const_get(:TRIPLET))
+      !!(triplet =~ URI.parser.const_get(:TI_TRIPLET))
   end
 end
 
@@ -60,10 +60,10 @@ end
 # they're passed.
 module TripletInterruptus
   # Determine if a string can be teased apart into URI-like components
-  TRIPLET = %r{\A(?:(?<userinfo>.+)@+)?(?<host>[\w.-]+):(?<path>.*)\z}.freeze
+  TI_TRIPLET = %r{\A(?:(?<userinfo>.+)@+)?(?<host>[\w.-]+):(?<path>.*)\z}.freeze
 
   # Determine if a string is prefixed with a URI scheme like http:// or ssh://
-  SCHEME = %r{\A(?:(?<scheme>[a-z]+)://)}.freeze
+  TI_SCHEME = %r{\A(?:(?<scheme>[a-z]+)://)}.freeze
 
   def parse(uri)
     return build_triplet(uri) if triplet?(uri)
@@ -80,7 +80,7 @@ module TripletInterruptus
   end
 
   def triplet?(address)
-    address.match(TRIPLET) && !address.match(SCHEME)
+    address.match(TI_TRIPLET) && !address.match(TI_SCHEME)
   end
 
   def build_triplet(address)
@@ -92,7 +92,7 @@ module TripletInterruptus
   private :build_triplet
 
   def parse_triplet(address)
-    parts = address.match(TRIPLET)
+    parts = address.match(TI_TRIPLET)
     return nil unless parts
 
     parts.names.map(&:to_sym).zip(parts.captures).to_h
